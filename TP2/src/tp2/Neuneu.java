@@ -35,7 +35,7 @@ public abstract class Neuneu {
         public void bouger() {
         }
 
-        public void (Nourriture n) {
+        public void manger(Nourriture n) {
         }
 
         public Neuneu seReproduire(Neuneu partenaire) {

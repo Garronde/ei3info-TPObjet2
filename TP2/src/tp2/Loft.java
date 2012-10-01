@@ -22,15 +22,15 @@ public class Loft {
         this.h = h;
     }
 
-    public afficheLoft() {
+    public void afficheLoft() {
 
     }
     
-    public tourDeJeu(){
+    public void tourDeJeu(){
         
     }
     
-    public addParticipant(){
+    public void addParticipant(){
         
     }
 }
