@@ -10,7 +10,7 @@ package tp2;
  */
 public class Nourriture {
 
-    private int energie;
+    protected int energie;
 
     public Nourriture() {
         energie = 55;
