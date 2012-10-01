@@ -7,8 +7,8 @@ package tp2;
 
 public class Erratique extends Neuneu {
 
-        public Erratique(int x, int y) {
-                super(x, y);
+        public Erratique(int x, int y, Loft l) {
+                super(x, y, l);
         }
         
         @Override

@@ -30,7 +30,7 @@ public class Loft {
         
     }
     
-    public void addParticipant(){
+    public void addParticipant(Neuneu nveauParticipant){
         
     }
 }

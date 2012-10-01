@@ -7,8 +7,8 @@ package tp2;
 
 public class Lapin extends Neuneu {
 
-        public Lapin(int x, int y) {
-                super(x, y);
+        public Lapin(int x, int y, Loft l) {
+                super(x, y, l);
         }
         
         @Override

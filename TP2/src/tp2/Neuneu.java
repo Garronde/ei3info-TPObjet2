@@ -13,6 +13,7 @@ public abstract class Neuneu {
         protected int energie;
         protected int x;
         protected int y;
+        protected Loft loft;
 
         public int getEnergie() {
                 return energie;
@@ -26,10 +27,11 @@ public abstract class Neuneu {
                 return y;
         }
 
-        public Neuneu(int x, int y) {
+        public Neuneu(int x, int y, Loft l) {
                 energie = 100;
                 this.x = x;
                 this.y = y;
+                loft = l;
         }
 
         public void bouger() {
@@ -43,19 +45,19 @@ public abstract class Neuneu {
                 Neuneu fils = null;
                 switch (random) {
                         case 1:
-                                fils = new Vorace(x, y);
+                                fils = new Vorace(x, y, loft);
                                 break;
                         case 2:
-                                fils = new Erratique(x, y);
+                                fils = new Erratique(x, y, loft);
                                 break;
                         case 3:
-                                fils = new Cannibale(x, y);
+                                fils = new Cannibale(x, y, loft);
                                 break;
                         case 4:
-                                fils = new Lapin(x, y);
+                                fils = new Lapin(x, y, loft);
                                 break;
                 }
-                energie -=45;
+                energie -= 45;
                 return fils;
         }
 }

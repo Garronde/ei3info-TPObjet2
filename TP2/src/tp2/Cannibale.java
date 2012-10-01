@@ -7,8 +7,8 @@ package tp2;
 
 public class Cannibale extends Neuneu {
 
-        public Cannibale(int x, int y) {
-                super(x, y);
+        public Cannibale(int x, int y, Loft l) {
+                super(x, y, l);
         }
         
         @Override
