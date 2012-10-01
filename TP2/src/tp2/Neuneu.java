@@ -10,9 +10,9 @@ package tp2;
  */
 public abstract class Neuneu {
 
-        private int energie;
-        private int x;
-        private int y;
+        protected int energie;
+        protected int x;
+        protected int y;
 
         public int getEnergie() {
                 return energie;
@@ -39,23 +39,23 @@ public abstract class Neuneu {
         }
 
         public Neuneu seReproduire(Neuneu partenaire) {
-                int lower = 1;
-                int higher = 5;
-                int random = (int) (Math.random() * (higher - lower)) + lower;
+                int random = (int) (Math.random() * 4) + 1;
+                Neuneu fils = null;
                 switch (random) {
                         case 1:
-                                Vorace fils = new Vorace(x, y);
+                                fils = new Vorace(x, y);
                                 break;
                         case 2:
-                                Erratique fils = new Erratique(x, y);
+                                fils = new Erratique(x, y);
                                 break;
                         case 3:
-                                Cannibale fils = new Cannibale(x, y);
+                                fils = new Cannibale(x, y);
                                 break;
                         case 4:
-                                Lapin fils = new Lapin(x, y);
+                                fils = new Lapin(x, y);
                                 break;
                 }
+                energie -=45;
                 return fils;
         }
 }
