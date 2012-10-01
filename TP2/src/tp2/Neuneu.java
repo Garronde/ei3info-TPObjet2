@@ -15,17 +15,19 @@ public abstract class Neuneu {
         protected int y;
         protected Loft loft;
 
-        public int getEnergie() {
-                return energie;
-        }
 
-        public int getX() {
-                return x;
-        }
+    public int getEnergie() {
+        return energie;
+    }
 
-        public int getY() {
-                return y;
-        }
+    public int getX() {
+        return x;
+    }
+
+    public int getY() {
+        return y;
+    }
+
 
         public Neuneu(int x, int y, Loft l) {
                 energie = 100;
@@ -34,11 +36,16 @@ public abstract class Neuneu {
                 loft = l;
         }
 
-        public void bouger() {
-        }
 
-        public void manger(Nourriture n) {
+    public void bouger() {
+    }
+
+    public void manger(Nourriture n) {
+        energie = n.energie + energie;
+        if (energie > 100) {
+            energie = 100;
         }
+    }
 
         public Neuneu seReproduire(Neuneu partenaire) {
                 int random = (int) (Math.random() * 4) + 1;
@@ -59,5 +66,9 @@ public abstract class Neuneu {
                 }
                 energie -= 45;
                 return fils;
+
         }
+        energie -= 45;
+        return fils;
+    }
 }
