@@ -11,5 +11,9 @@ import java.util.List;
  * @author garrondeau
  */
 public class Case {
-   private List<Object> contenuCase;
+   public List<Object> contenuCase;
+   
+   public Case() {
+           contenuCase = null;
+   }
 }
