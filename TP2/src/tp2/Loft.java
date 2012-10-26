@@ -91,6 +91,16 @@ public class Loft {
         }
 
         public void addParticipant(Neuneu nveauParticipant) {
+                participants.add(nveauParticipant);
+                int x = nveauParticipant.getX();
+                int y = nveauParticipant.getY();
+                damier[x][y].contenuCase.add(nveauParticipant);
+        }
+        public void removeParticipant(Neuneu nveauParticipant) {
+                participants.remove(nveauParticipant);
+                int x = nveauParticipant.getX();
+                int y = nveauParticipant.getY();
+                damier[x][y].contenuCase.remove(nveauParticipant);
         }
 
         int getW() {
