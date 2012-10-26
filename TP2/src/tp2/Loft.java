@@ -36,7 +36,7 @@ public class Loft {
                         int random = (int) (Math.random() * 4) + 1;
                         int x = (int) (Math.random() * (w));
                         int y = (int) (Math.random() * (h));
-                        while (!damier[x][y].contenuCase.isEmpty()) {                                
+                        while (!damier[x][y].contenuCase.isEmpty()) {
                                 x = (int) (Math.random() * (w));
                                 y = (int) (Math.random() * (h));
                         }
@@ -63,8 +63,28 @@ public class Loft {
         }
 
         public void tourDeJeu() {
+                for (int i = 0; i < participants.size(); i++) {
+                        Neuneu lofteur = participants.get(i);
+                        lofteur.bouger();
+                        int x = lofteur.getX();
+                        int y = lofteur.getY();
+                        Case caseCourante = damier[x][y];
+                        if (caseCourante.contenuCase.get(0) instanceof Nourriture) {
+                                caseCourante.contenuCase.remove(0);
+                                caseCourante.contenuCase.add(lofteur);
+                                lofteur.manger((Nourriture) caseCourante.contenuCase.get(0));
+                        }
+                }
         }
 
         public void addParticipant(Neuneu nveauParticipant) {
+        }
+
+        int getW() {
+                return w;
+        }
+
+        int getH() {
+                return h;
         }
 }
