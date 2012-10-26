@@ -18,7 +18,7 @@ public class Erratique extends Neuneu {
         if (i == 1 && x != 0) {
             x = x - 1;
         }
-        if (i == 3 && x != Loft.w - 1) {
+        if (i == 3 && x != loft.getW() - 1) {
             x = x + 1;
         }
         int j = (int) (Math.random() * 3 + 1);
@@ -26,7 +26,7 @@ public class Erratique extends Neuneu {
             y = y - 1;
 
         }
-        if (j == 3 && y != Loft.h - 1) {
+        if (j == 3 && y != loft.getH() - 1) {
             y = y + 1;
         }
     }
