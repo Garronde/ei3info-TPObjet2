@@ -75,7 +75,7 @@ public abstract class Neuneu {
         if (partenaire.energie <= 45) {
             /* tuer le partenaire
              */
-            loft.removeParticipant(participant);
+            loft.removeParticipant(partenaire);
         }
     }
 }

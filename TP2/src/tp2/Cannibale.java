@@ -14,7 +14,7 @@ public class Cannibale extends Neuneu {
     public void bouger() {
     }
 
-    public void manger(Neuneu v) {
+    public void mangerLofteur(Neuneu v) {
         energie = v.energie + energie;
         if (energie > 100) {
             energie = 100;
