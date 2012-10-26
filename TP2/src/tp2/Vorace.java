@@ -38,6 +38,7 @@ public class Vorace extends Neuneu {
     }
 
     public void dessinerObjet(Graphics g) {
+        super.dessinerObjet(g);
         g.setColor(Color.yellow);
     }
 }

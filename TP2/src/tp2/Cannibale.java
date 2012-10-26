@@ -47,6 +47,7 @@ public class Cannibale extends Neuneu {
     }
 
     public void dessinerObjet(Graphics g) {
+        super.dessinerObjet(g);
         g.setColor(Color.red);
     }
 }

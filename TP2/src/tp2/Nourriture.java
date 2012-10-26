@@ -4,6 +4,9 @@
  */
 package tp2;
 
+import java.awt.Color;
+import java.awt.Graphics;
+
 /**
  *
  * @author garrondeau
@@ -14,5 +17,9 @@ public class Nourriture {
 
     public Nourriture() {
         energie = 55;
+    }
+
+    public void dessinerObjet(Graphics g) {
+        g.setColor(Color.black);
     }
 }
