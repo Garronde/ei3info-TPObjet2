@@ -44,7 +44,7 @@ public abstract class Neuneu {
         }
     }
 
-    public Neuneu seReproduire(Neuneu partenaire) {
+    public void seReproduire(Neuneu partenaire) {
         if (this.energie > 45 && partenaire.energie > 45) /*S'il ont assez d'energie (>45) ils font un fils
          * */ {
             int random = (int) (Math.random() * 4) + 1;
@@ -65,15 +65,17 @@ public abstract class Neuneu {
             }
             energie -= 45;
             partenaire.energie -= 45;
-            return fils;
+            loft.addParticipant(fils);
         }
         if (this.energie <= 45) {
             /* tuer le neueneu
              */
+            loft.removeParticipant(this);
         }
         if (partenaire.energie <= 45) {
             /* tuer le partenaire
              */
+            loft.removeParticipant(participant);
         }
     }
 }
