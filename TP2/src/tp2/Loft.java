@@ -12,7 +12,7 @@ import java.util.List;
  */
 public class Loft {
 
-        private Case[][] damier;
+        public Case[][] damier;
         private int w;
         private int h;
         private List<Neuneu> participants;
