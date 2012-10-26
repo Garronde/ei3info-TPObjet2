@@ -79,7 +79,7 @@ public class Loft {
                                 if (lofteur instanceof Cannibale) {
                                         int random = (int) Math.random();
                                         if (random < 0.5) {
-                                                lofteur.mangerLofteur((Neuneu) caseCourante.contenuCase.get(0));
+                                                ((Cannibale)lofteur).mangerLofteur((Neuneu) caseCourante.contenuCase.get(0));
                                         } else {
                                                 lofteur.seReproduire((Neuneu) caseCourante.contenuCase.get(0));
                                         }
