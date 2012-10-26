@@ -1,5 +1,7 @@
 package tp2;
 
+import java.awt.Graphics;
+
 /*
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
@@ -8,7 +10,7 @@ package tp2;
  *
  * @author Tony MARTIN
  */
-public abstract class Neuneu {
+public abstract class Neuneu implements ObjetDessinable{
 
     protected int energie;
     protected int x;
@@ -77,5 +79,10 @@ public abstract class Neuneu {
              */
             loft.removeParticipant(partenaire);
         }
+    }
+    
+    public void dessinerObjet(Graphics g){
+            
+            g.fillRect(x*loft.TAILLE_CASE_X, y*loft.TAILLE_CASE_Y, loft.TAILLE_CASE_X, loft.TAILLE_CASE_Y);
     }
 }

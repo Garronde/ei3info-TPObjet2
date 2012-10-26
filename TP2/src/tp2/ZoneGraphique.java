@@ -32,7 +32,7 @@ public class ZoneGraphique extends JFrame {
                 super(titre);
 
                 // ajout d'une taille par d�faut
-                setSize(600, 600);
+                setSize(TP2.TAILLE_FENETRE_X, TP2.TAILLE_FENETRE_Y);
 
                 // cr�ation de la liste d'objets
                 liste = new LinkedList<ObjetDessinable>();

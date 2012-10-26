@@ -4,16 +4,16 @@
  */
 package tp2;
 
-import java.util.List;
+import java.util.LinkedList;
 
 /**
  *
  * @author garrondeau
  */
 public class Case {
-   public List<Object> contenuCase;
+   public LinkedList<Object> contenuCase;
    
    public Case() {
-           contenuCase = null;
+           contenuCase = new LinkedList<Object>();
    }
 }

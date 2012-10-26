@@ -4,6 +4,7 @@
  */
 package tp2;
 
+import java.util.LinkedList;
 import java.util.List;
 
 /**
@@ -15,11 +16,17 @@ public class Loft {
         public Case[][] damier;
         private int w;
         private int h;
-        private List<Neuneu> participants;
+        private LinkedList<Neuneu> participants;
+        public int TAILLE_CASE_X;
+        public int TAILLE_CASE_Y;
 
         public Loft(int width, int height, int nbParticipants) {
                 this.w = width;
                 this.h = height;
+                damier = new Case[w][h];
+                participants = new LinkedList<Neuneu>();
+                TAILLE_CASE_X = TP2.TAILLE_FENETRE_X / w;
+                TAILLE_CASE_Y = TP2.TAILLE_FENETRE_Y / h;
                 //On remplit le damier avec de la nourriture
                 for (int i = 0; i < h; i++) {
                         for (int j = 0; j < w; j++) {
@@ -59,7 +66,16 @@ public class Loft {
                 }
         }
 
-        public void afficheLoft() {
+        public void afficheLoft(ZoneGraphique fenetre) {
+                LinkedList<ObjetDessinable> listeObjets = null;
+                for (int i = 0; i < h; i++) {
+                        for (int j = 0; j < w; j++) {
+                                if (!damier[i][j].contenuCase.isEmpty()) {
+                                        listeObjets.add((ObjetDessinable) damier[i][j].contenuCase.get(0));
+                                }
+                        }
+                }
+                fenetre.liste = listeObjets;
         }
 
         public void tourDeJeu() {
@@ -71,7 +87,7 @@ public class Loft {
                         Case caseCourante = damier[x][y];
                         caseCourante.contenuCase.add(lofteur);
                         //Si on tombe sur de la nourriture, on la mange
-                        if (caseCourante.contenuCase.get(0) instanceof Nourriture || caseCourante.contenuCase.get(0) instanceof Alcool) {
+                        if (caseCourante.contenuCase.get(0) instanceof Nourriture /*|| caseCourante.contenuCase.get(0) instanceof Alcool*/) {
                                 caseCourante.contenuCase.remove(0);
                                 lofteur.manger((Nourriture) caseCourante.contenuCase.get(0));
                         } else //Si on tombe sur un lofteur, on se reproduit avec
@@ -79,7 +95,7 @@ public class Loft {
                                 if (lofteur instanceof Cannibale) {
                                         int random = (int) Math.random();
                                         if (random < 0.5) {
-                                                ((Cannibale)lofteur).mangerLofteur((Neuneu) caseCourante.contenuCase.get(0));
+                                                ((Cannibale) lofteur).mangerLofteur((Neuneu) caseCourante.contenuCase.get(0));
                                         } else {
                                                 lofteur.seReproduire((Neuneu) caseCourante.contenuCase.get(0));
                                         }
@@ -96,6 +112,7 @@ public class Loft {
                 int y = nveauParticipant.getY();
                 damier[x][y].contenuCase.add(nveauParticipant);
         }
+
         public void removeParticipant(Neuneu nveauParticipant) {
                 participants.remove(nveauParticipant);
                 int x = nveauParticipant.getX();
@@ -109,5 +126,9 @@ public class Loft {
 
         int getH() {
                 return h;
+        }
+
+        public List<Neuneu> getParticipants() {
+                return participants;
         }
 }
