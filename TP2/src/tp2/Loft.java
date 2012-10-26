@@ -69,10 +69,23 @@ public class Loft {
                         int x = lofteur.getX();
                         int y = lofteur.getY();
                         Case caseCourante = damier[x][y];
-                        if (caseCourante.contenuCase.get(0) instanceof Nourriture) {
+                        caseCourante.contenuCase.add(lofteur);
+                        //Si on tombe sur de la nourriture, on la mange
+                        if (caseCourante.contenuCase.get(0) instanceof Nourriture || caseCourante.contenuCase.get(0) instanceof Alcool) {
                                 caseCourante.contenuCase.remove(0);
-                                caseCourante.contenuCase.add(lofteur);
                                 lofteur.manger((Nourriture) caseCourante.contenuCase.get(0));
+                        } else //Si on tombe sur un lofteur, on se reproduit avec
+                        if (caseCourante.contenuCase.get(0) instanceof Neuneu) {
+                                if (lofteur instanceof Cannibale) {
+                                        int random = (int) Math.random();
+                                        if (random < 0.5) {
+                                                lofteur.mangerLofteur((Neuneu) caseCourante.contenuCase.get(0));
+                                        } else {
+                                                lofteur.seReproduire((Neuneu) caseCourante.contenuCase.get(0));
+                                        }
+                                } else {
+                                        lofteur.seReproduire((Neuneu) caseCourante.contenuCase.get(0));
+                                }
                         }
                 }
         }
