@@ -12,33 +12,25 @@ public class Lapin extends Neuneu {
 
     @Override
     public void bouger() {
-      
-            int a, b;
-            boolean trouve = false;
-            for (i = -1; i++; i <= 1) {
-                for (j = -1; j++; j <= 1) {
-                    if ((0 <= this.x + i) && (this.x + i <= loft.getW()) && (0 <= this.x + i) && (this.x + i <= 99)) {
-                        if (damier[x + i][y + j].contenuCase.get(0) instanceof Neuneu) {
-                            a = i;
-                            b = j;
-                            trouve = true;
-                        }
-                    }
+
+        int a = 0, b = 0;
+        boolean trouve = false;
+        for (int i = -1; i <= 1; i++) {
+            for (int j = -1; j <= 1; j++) {
+
+                if (loft.damier[x + i][y + j].contenuCase.get(0) instanceof Neuneu) {
+                    a = i;
+                    b = j;
+                    trouve = true;
                 }
-            }
-            if (!trouve) {
-                super.bouger();
-            } else {
-                this.x += a;
-                this.y += b;
+
             }
         }
-
-
-    
-
-    
-}
-}
-        
+        if (!trouve) {
+            super.bouger();
+        } else {
+            this.x += a;
+            this.y += b;
+        }
+    }
 }
