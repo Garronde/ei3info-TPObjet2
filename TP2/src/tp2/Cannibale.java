@@ -42,6 +42,7 @@ public class Cannibale extends Neuneu {
         if (energie > 100) {
             energie = 100;
             /* il faut tuer le Neuneu victime v*/
+            loft.removeParticipant(v);
         }
 
     }
