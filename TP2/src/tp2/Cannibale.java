@@ -4,13 +4,16 @@
  */
 package tp2;
 
+import java.awt.Color;
+import java.awt.Graphics;
+
 public class Cannibale extends Neuneu {
 
     public Cannibale(int x, int y, Loft l) {
         super(x, y, l);
     }
 
-        @Override
+    @Override
     public void bouger() {
 
         int a = 0, b = 0;
@@ -41,5 +44,9 @@ public class Cannibale extends Neuneu {
             /* il faut tuer le Neuneu victime v*/
         }
 
+    }
+
+    public void dessinerObjet(Graphics g) {
+        g.setColor(Color.red);
     }
 }

@@ -4,6 +4,9 @@
  */
 package tp2;
 
+import java.awt.Color;
+import java.awt.Graphics;
+
 public class Erratique extends Neuneu {
 
     public Erratique(int x, int y, Loft l) {
@@ -28,5 +31,9 @@ public class Erratique extends Neuneu {
         if (j == 3 && y != loft.getH() - 1) {
             y++;
         }
+    }
+
+    public void dessinerObjet(Graphics g) {
+        g.setColor(Color.green);
     }
 }

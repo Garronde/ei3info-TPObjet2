@@ -4,6 +4,9 @@
  */
 package tp2;
 
+import java.awt.Color;
+import java.awt.Graphics;
+
 public class Lapin extends Neuneu {
 
     public Lapin(int x, int y, Loft l) {
@@ -32,5 +35,9 @@ public class Lapin extends Neuneu {
             this.x += a;
             this.y += b;
         }
+    }
+
+    public void dessinerObjet(Graphics g) {
+        g.setColor(Color.blue);
     }
 }

@@ -4,14 +4,16 @@
  */
 package tp2;
 
+import java.awt.Color;
+import java.awt.Graphics;
 
 public class Vorace extends Neuneu {
 
-        public Vorace(int x, int y, Loft l) {
-                super(x, y,l);
-        }
-        
-            @Override
+    public Vorace(int x, int y, Loft l) {
+        super(x, y, l);
+    }
+
+    @Override
     public void bouger() {
 
         int a = 0, b = 0;
@@ -33,5 +35,9 @@ public class Vorace extends Neuneu {
             this.x += a;
             this.y += b;
         }
+    }
+
+    public void dessinerObjet(Graphics g) {
+        g.setColor(Color.yellow);
     }
 }
