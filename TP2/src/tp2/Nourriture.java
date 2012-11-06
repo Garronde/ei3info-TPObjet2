@@ -11,15 +11,23 @@ import java.awt.Graphics;
  *
  * @author garrondeau
  */
-public class Nourriture {
+public class Nourriture implements ObjetDessinable {
 
-    protected int energie;
+        protected int energie;
+        protected Loft loft;
+        protected int x;
+        protected int y;
 
-    public Nourriture() {
-        energie = 55;
-    }
+        public Nourriture(int x, int y, Loft l) {
+                energie = 55;
+                loft = l;
+                this.x = x;
+                this.y = y;
+        }
 
-    public void dessinerObjet(Graphics g) {
-        g.setColor(Color.black);
-    }
+        @Override
+        public void dessinerObjet(Graphics g) {
+                g.fillOval(x * loft.TAILLE_CASE_X, y * loft.TAILLE_CASE_Y, loft.TAILLE_CASE_X, loft.TAILLE_CASE_Y);
+                g.setColor(Color.black);
+        }
 }

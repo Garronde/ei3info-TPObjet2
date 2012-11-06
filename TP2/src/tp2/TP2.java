@@ -20,9 +20,10 @@ public class TP2 {
         public static void main(String[] args) {
                 Loft loft = new Loft(20, 20, 8);
                 ZoneGraphique fenetre = new ZoneGraphique("Le loft des neuneus");
-                
+                int nbrTours = 0;
                 
                 while (!loft.getParticipants().isEmpty()) {
+                        System.out.println("Tour de jeu n° : " + nbrTours);
                         loft.tourDeJeu();
                         loft.afficheLoft(fenetre);
                         try {
@@ -30,7 +31,7 @@ public class TP2 {
                         } catch (InterruptedException ex) {
                                 Logger.getLogger(TP2.class.getName()).log(Level.SEVERE, null, ex);
                         }
-
+                        nbrTours++;
                 }
         }
 }

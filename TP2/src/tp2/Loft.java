@@ -12,14 +12,14 @@ import java.util.List;
  * @author garrondeau
  */
 public class Loft {
-
+        
         public Case[][] damier;
         private int w;
         private int h;
         private LinkedList<Neuneu> participants;
         public int TAILLE_CASE_X;
         public int TAILLE_CASE_Y;
-
+        
         public Loft(int width, int height, int nbParticipants) {
                 this.w = width;
                 this.h = height;
@@ -32,9 +32,9 @@ public class Loft {
                         for (int j = 0; j < w; j++) {
                                 damier[i][j] = new Case();
                                 if (Math.random() < 0.05) {
-                                        damier[i][j].contenuCase.add(new Nourriture());
+                                        damier[i][j].contenuCase.add(new Nourriture(i, j, this));
                                 } else if (Math.random() < 0.01) {
-                                        damier[i][j].contenuCase.add(new Alcool());
+                                        damier[i][j].contenuCase.add(new Alcool(i, j, this));
                                 }
                         }
                 }
@@ -65,19 +65,21 @@ public class Loft {
                         participants.add(fils);
                 }
         }
-
+        
         public void afficheLoft(ZoneGraphique fenetre) {
-                LinkedList<ObjetDessinable> listeObjets = null;
+                LinkedList<ObjetDessinable> listeObjets = new LinkedList<ObjetDessinable>();
                 for (int i = 0; i < h; i++) {
                         for (int j = 0; j < w; j++) {
-                                if (!damier[i][j].contenuCase.isEmpty()) {
+                                if (!(damier[i][j].contenuCase.isEmpty())) {
+                                        System.out.println("i=" + i + " " + "j=" + j);
+                                        System.out.println(damier[i][j].contenuCase.get(0).getClass());
                                         listeObjets.add((ObjetDessinable) damier[i][j].contenuCase.get(0));
                                 }
                         }
                 }
                 fenetre.liste = listeObjets;
         }
-
+        
         public void tourDeJeu() {
                 for (int i = 0; i < participants.size(); i++) {
                         Neuneu lofteur = participants.get(i);
@@ -86,10 +88,11 @@ public class Loft {
                         int y = lofteur.getY();
                         Case caseCourante = damier[x][y];
                         caseCourante.contenuCase.add(lofteur);
+                        
                         //Si on tombe sur de la nourriture, on la mange
                         if (caseCourante.contenuCase.get(0) instanceof Nourriture /*|| caseCourante.contenuCase.get(0) instanceof Alcool*/) {
-                                caseCourante.contenuCase.remove(0);
                                 lofteur.manger((Nourriture) caseCourante.contenuCase.get(0));
+                                caseCourante.contenuCase.remove(0);
                         } else //Si on tombe sur un lofteur, on se reproduit avec
                         if (caseCourante.contenuCase.get(0) instanceof Neuneu) {
                                 if (lofteur instanceof Cannibale) {
@@ -105,29 +108,29 @@ public class Loft {
                         }
                 }
         }
-
+        
         public void addParticipant(Neuneu nveauParticipant) {
                 participants.add(nveauParticipant);
                 int x = nveauParticipant.getX();
                 int y = nveauParticipant.getY();
                 damier[x][y].contenuCase.add(nveauParticipant);
         }
-
+        
         public void removeParticipant(Neuneu nveauParticipant) {
                 participants.remove(nveauParticipant);
                 int x = nveauParticipant.getX();
                 int y = nveauParticipant.getY();
                 damier[x][y].contenuCase.remove(nveauParticipant);
         }
-
+        
         int getW() {
                 return w;
         }
-
+        
         int getH() {
                 return h;
         }
-
+        
         public List<Neuneu> getParticipants() {
                 return participants;
         }

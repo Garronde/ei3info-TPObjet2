@@ -9,13 +9,14 @@ import java.awt.Graphics;
 
 public class Alcool extends Nourriture {
 
-    public Alcool() {
-        energie = 25;
-    }
+        public Alcool(int x, int y, Loft loft) {
+                super(x, y, loft);
+                energie = 25;
+        }
 
-    @Override
-    public void dessinerObjet(Graphics g) {
-        super.dessinerObjet(g);
-        g.setColor(Color.orange);
-    }
+        @Override
+        public void dessinerObjet(Graphics g) {
+                super.dessinerObjet(g);
+                g.setColor(Color.orange);
+        }
 }
