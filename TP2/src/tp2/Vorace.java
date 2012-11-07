@@ -25,7 +25,6 @@ public class Vorace extends Neuneu {
                                         a = i;
                                         b = j;
                                         trouve = true;
-                                        System.out.println("Vorace bouge voracement");
                                 }
 
                         }
@@ -34,7 +33,6 @@ public class Vorace extends Neuneu {
                         this.x += a;
                         this.y += b;
                 } else {
-                        System.out.println("Vorace bouge neuneument");
                         super.bouger();
 
                 }

@@ -71,8 +71,6 @@ public class Loft {
                 for (int i = 0; i < h; i++) {
                         for (int j = 0; j < w; j++) {
                                 if (!(damier[i][j].contenuCase.isEmpty())) {
-                                        System.out.println("i=" + i + " " + "j=" + j);
-                                        System.out.println(damier[i][j].contenuCase.get(0).getClass());
                                         listeObjets.add((ObjetDessinable) damier[i][j].contenuCase.get(0));
                                 }
                         }
@@ -95,14 +93,14 @@ public class Loft {
                                 caseCourante.contenuCase.remove(0);
                         } else //Si on tombe sur un lofteur, on se reproduit avec
                         if (caseCourante.contenuCase.get(0) instanceof Neuneu) {
-                                if (lofteur instanceof Cannibale) {
+                                if (lofteur instanceof Cannibale && caseCourante.contenuCase.get(0) != lofteur) {
                                         int random = (int) Math.random();
                                         if (random < 0.5) {
                                                 ((Cannibale) lofteur).mangerLofteur((Neuneu) caseCourante.contenuCase.get(0));
                                         } else {
                                                 lofteur.seReproduire((Neuneu) caseCourante.contenuCase.get(0));
                                         }
-                                } else {
+                                } else if (caseCourante.contenuCase.get(0) != lofteur){
                                         lofteur.seReproduire((Neuneu) caseCourante.contenuCase.get(0));
                                 }
                         }

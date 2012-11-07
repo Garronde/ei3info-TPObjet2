@@ -21,7 +21,7 @@ public class Lapin extends Neuneu {
                 for (int i = -1; i <= 1; i++) {
                         for (int j = -1; j <= 1; j++) {
 
-                                if ((x + i) > -1 && (y + j) > -1 && (x + i) < loft.getW() && (y + j) < loft.getH() && !loft.damier[x + i][y + j].contenuCase.isEmpty() && loft.damier[x + i][y + j].contenuCase.get(0) instanceof Neuneu) {
+                                if ((x + i) > -1 && (y + j) > -1 && (x + i) < loft.getW() && (y + j) < loft.getH() && !loft.damier[x + i][y + j].contenuCase.isEmpty() && loft.damier[x + i][y + j].contenuCase.get(0) instanceof Neuneu && !(i==0 && j==0)) {
                                         a = i;
                                         b = j;
                                         trouve = true;
