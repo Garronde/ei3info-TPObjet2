@@ -44,6 +44,7 @@ public class Cannibale extends Neuneu {
             /* il faut tuer le Neuneu victime v*/
             loft.removeParticipant(v);
         }
+        System.out.println(this + " vient de manger " + v + " !");
 
     }
 

@@ -11,9 +11,9 @@ import java.util.LinkedList;
  * @author garrondeau
  */
 public class Case {
-   public LinkedList<Object> contenuCase;
+   public LinkedList<ObjetDessinable> contenuCase;
    
    public Case() {
-           contenuCase = new LinkedList<Object>();
+           contenuCase = new LinkedList<ObjetDessinable>();
    }
 }

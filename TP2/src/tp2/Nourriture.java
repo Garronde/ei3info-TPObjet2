@@ -30,4 +30,13 @@ public class Nourriture implements ObjetDessinable {
                 g.fillOval(x * loft.TAILLE_CASE_X, y * loft.TAILLE_CASE_Y, loft.TAILLE_CASE_X, loft.TAILLE_CASE_Y);
                 g.setColor(Color.black);
         }
+
+        void detruire() {
+                loft.damier[x][y].contenuCase.remove(this);
+                try {
+                        this.finalize();
+                } catch (Throwable ex) {
+                        System.out.println(this + "n'a pas pu être détruit : " + ex);
+                }
+        }
 }

@@ -60,45 +60,51 @@ public abstract class Neuneu implements ObjetDessinable {
                 if (energie > 100) {
                         energie = 100;
                 }
+                System.out.println(this + " vient de manger " + n);
+                n.detruire();
         }
 
         public void seReproduire(Neuneu partenaire) {
-                if (this.energie > 45 && partenaire.energie > 45) /*S'il ont assez d'energie (>45) ils font un fils
-                 * */ {
-                        int random = (int) (Math.random() * 4) + 1;
-                        Neuneu fils = null;
-                        switch (random) {
-                                case 1:
-                                        fils = new Vorace(x, y, loft);
-                                        break;
-                                case 2:
-                                        fils = new Erratique(x, y, loft);
-                                        break;
-                                case 3:
-                                        fils = new Cannibale(x, y, loft);
-                                        break;
-                                case 4:
-                                        fils = new Lapin(x, y, loft);
-                                        break;
-                        }
-                        energie -= 45;
-                        partenaire.energie -= 45;
-                        loft.addParticipant(fils);
+
+                int random = (int) (Math.random() * 4) + 1;
+                Neuneu fils = null;
+                switch (random) {
+                        case 1:
+                                fils = new Vorace(x, y, loft);
+                                break;
+                        case 2:
+                                fils = new Erratique(x, y, loft);
+                                break;
+                        case 3:
+                                fils = new Cannibale(x, y, loft);
+                                break;
+                        case 4:
+                                fils = new Lapin(x, y, loft);
+                                break;
                 }
-                if (this.energie <= 45) {
+                energie -= 45;
+                partenaire.energie -= 45;
+                System.out.println(this + " et " + partenaire + " viennent de se reproduire.");
+                loft.addParticipant(fils);
+                System.out.println(fils + "est né.");
+
+                if (this.energie <= 0) {
                         /* tuer le neueneu
                          */
                         loft.removeParticipant(this);
+                        System.out.println(this + " vient de mourir !");
                 }
-                if (partenaire.energie <= 45) {
+                if (partenaire.energie <= 0) {
                         /* tuer le partenaire
                          */
                         loft.removeParticipant(partenaire);
+                        System.out.println(partenaire + " vient de mourir !");
                 }
         }
 
         @Override
         public void dessinerObjet(Graphics g) {
+                System.out.println("dessiner neuneu");
                 g.fillRect(x * loft.TAILLE_CASE_X, y * loft.TAILLE_CASE_Y, loft.TAILLE_CASE_X, loft.TAILLE_CASE_Y);
         }
 }

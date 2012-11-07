@@ -12,14 +12,14 @@ import java.util.List;
  * @author garrondeau
  */
 public class Loft {
-        
+
         public Case[][] damier;
         private int w;
         private int h;
         private LinkedList<Neuneu> participants;
         public int TAILLE_CASE_X;
         public int TAILLE_CASE_Y;
-        
+
         public Loft(int width, int height, int nbParticipants) {
                 this.w = width;
                 this.h = height;
@@ -65,19 +65,19 @@ public class Loft {
                         participants.add(fils);
                 }
         }
-        
+
         public void afficheLoft(ZoneGraphique fenetre) {
                 LinkedList<ObjetDessinable> listeObjets = new LinkedList<ObjetDessinable>();
                 for (int i = 0; i < h; i++) {
                         for (int j = 0; j < w; j++) {
                                 if (!(damier[i][j].contenuCase.isEmpty())) {
-                                        listeObjets.add((ObjetDessinable) damier[i][j].contenuCase.get(0));
+                                        fenetre.ajouterObjet(damier[i][j].contenuCase.get(0));
                                 }
                         }
                 }
-                fenetre.liste = listeObjets;
+                fenetre.repaint();
         }
-        
+
         public void tourDeJeu() {
                 for (int i = 0; i < participants.size(); i++) {
                         Neuneu lofteur = participants.get(i);
@@ -85,8 +85,9 @@ public class Loft {
                         int x = lofteur.getX();
                         int y = lofteur.getY();
                         Case caseCourante = damier[x][y];
-                        caseCourante.contenuCase.add(lofteur);
-                        
+                        if (!caseCourante.contenuCase.contains(lofteur)) {
+                                caseCourante.contenuCase.add(lofteur);
+                        }
                         //Si on tombe sur de la nourriture, on la mange
                         if (caseCourante.contenuCase.get(0) instanceof Nourriture /*|| caseCourante.contenuCase.get(0) instanceof Alcool*/) {
                                 lofteur.manger((Nourriture) caseCourante.contenuCase.get(0));
@@ -100,35 +101,36 @@ public class Loft {
                                         } else {
                                                 lofteur.seReproduire((Neuneu) caseCourante.contenuCase.get(0));
                                         }
-                                } else if (caseCourante.contenuCase.get(0) != lofteur){
+                                } else if (caseCourante.contenuCase.get(0) != lofteur) {
                                         lofteur.seReproduire((Neuneu) caseCourante.contenuCase.get(0));
                                 }
                         }
                 }
         }
-        
+
         public void addParticipant(Neuneu nveauParticipant) {
                 participants.add(nveauParticipant);
                 int x = nveauParticipant.getX();
                 int y = nveauParticipant.getY();
                 damier[x][y].contenuCase.add(nveauParticipant);
         }
-        
-        public void removeParticipant(Neuneu nveauParticipant) {
-                participants.remove(nveauParticipant);
-                int x = nveauParticipant.getX();
-                int y = nveauParticipant.getY();
-                damier[x][y].contenuCase.remove(nveauParticipant);
+
+        public void removeParticipant(Neuneu participantMort) {
+                int x = participantMort.getX();
+                int y = participantMort.getY();
+                participants.remove(participantMort);
+                damier[x][y].contenuCase.remove(participantMort);
+                System.out.println("Contenu case " + x + " " + y + damier[x][y].contenuCase);
         }
-        
+
         int getW() {
                 return w;
         }
-        
+
         int getH() {
                 return h;
         }
-        
+
         public List<Neuneu> getParticipants() {
                 return participants;
         }
